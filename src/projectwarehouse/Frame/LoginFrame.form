@@ -43,7 +43,7 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btn_sign_in" pref="158" max="32767" attributes="0"/>
                           <Component id="tf_username" pref="158" max="32767" attributes="0"/>
-                          <Component id="tf_password" max="32767" attributes="0"/>
+                          <Component id="tf_password" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -94,8 +94,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="tf_username">
     </Component>
-    <Component class="javax.swing.JTextField" name="tf_password">
-    </Component>
     <Component class="javax.swing.JButton" name="btn_sign_in">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -106,6 +104,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_sign_inActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="tf_password">
     </Component>
   </SubComponents>
 </Form>

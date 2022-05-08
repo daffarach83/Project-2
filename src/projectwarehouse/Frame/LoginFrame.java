@@ -38,8 +38,8 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tf_username = new javax.swing.JTextField();
-        tf_password = new javax.swing.JTextField();
         btn_sign_in = new javax.swing.JButton();
+        tf_password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,7 +104,7 @@ public class LoginFrame extends javax.swing.JFrame {
         try{
             String username = tf_username.getText();
 //            String password = new String(tf_password.getPassword());
-            String password = new String(tf_password.getText());
+            String password = new String(tf_password.getPassword());
 
             model.setUsername(username);
             model.setPassword(password);
@@ -198,7 +198,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField tf_password;
+    private javax.swing.JPasswordField tf_password;
     private javax.swing.JTextField tf_username;
     // End of variables declaration//GEN-END:variables
 }

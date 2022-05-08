@@ -71,7 +71,7 @@ public class MainController extends BaseController {
         map.put(3, model.getStock());
         map.put(4, date);
 
-        String sql = this.query.cobacoba;
+        String sql = this.query.barangkeluarinsert;
         
         return this.preparedStatement(map, sql);
     }
@@ -89,8 +89,13 @@ public class MainController extends BaseController {
         return this.preparedStatement(map, sql);
     }
     
-    public ResultSet get() {
-        String sql = this.query.get;
+    public ResultSet getIn() {
+        String sql = this.query.getIn;
+        return (ResultSet) this.get(sql);
+    }
+    
+    public ResultSet getOut() {
+        String sql = this.query.getOut;
         return (ResultSet) this.get(sql);
     }
     

@@ -55,54 +55,22 @@ public class MainFrame extends javax.swing.JFrame {
         btn_out.setEnabled(false);
     }
     public void getAllData() {
-        this.rs = controller.get();
+        this.rs = controller.getIn();
         this.loadTableIn(this.rs);
     }
     public void getAllDataOut() {
-        this.rs = controller.get();
+        this.rs = controller.getOut();
         this.loadTableOut(this.rs);
     }
     
-//    private void updatebarangmasuk(){
-//        try{
-//        int stock = Integer.parseInt(tf_stock.getText());
-//        String ids = tf_pid.getText();
-//        this.product_id = ids;
-//        model.setStock(Stock);
-//        
-//        controller.stockdecreasebarangmasuk(this.product_id, model);
-//        }catch(Exception e){
-//            System.out.println(e.getMessage());
-//        }
-//    }
-//    private void insertbarangkeluar(){
-//        try{
-////        int stock = Integer.parseInt(tf_stock.getText());
-////        String ids = tf_pid.getText();
-////        this.product_id = ids;
-////        model.setStock(ids);
-//        controller.stockinsertbarangkeluar(this.product_id, model);
-//        }catch(Exception e){
-//            System.out.println(e.getMessage());
-//        }
-//    }
-    
-//    private void method(){
-//        try{
-//        controller.stockinsertbarangkeluar(this.product_id, model);
-//        controller.stockdecreasebarangmasuk(this.product_id, model);
-//        }catch(Exception e){
-//            System.out.println(e.getMessage());
-//        }
-//    }
     
     private void showTableIn(){
-        this.rs = controller.get();
+        this.rs = controller.getIn();
         this.loadTableIn(this.rs);
     }
     
     private void showTableOut(){
-        this.rs = controller.get();
+        this.rs = controller.getOut();
         this.loadTableOut(this.rs);
     }
     
@@ -112,6 +80,11 @@ public class MainFrame extends javax.swing.JFrame {
     public void loadTableOut(ResultSet rs) {
         tb_product_out.setModel(DbUtils.resultSetToTableModel(rs));
     }
+    
+    public void tableOutShow(){
+        tb_product_out.setEnabled(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -138,7 +111,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         tf_search = new javax.swing.JTextField();
         btn_searchName = new javax.swing.JButton();
-        btn_searchID = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btn_out = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -236,13 +208,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        btn_searchID.setText("Cari dengan ID");
-        btn_searchID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_searchIDActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Tabel Barang Masuk");
 
         btn_out.setText("Out");
@@ -310,9 +275,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tf_search, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(btn_searchName)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_searchID))
+                        .addComponent(btn_searchName))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
@@ -341,8 +304,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tf_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_searchName)
-                            .addComponent(btn_searchID))))
+                            .addComponent(btn_searchName))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -456,10 +418,6 @@ public class MainFrame extends javax.swing.JFrame {
         this.search("name", tf_search.getText());
     }//GEN-LAST:event_btn_searchNameActionPerformed
 
-    private void btn_searchIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchIDActionPerformed
-        this.search("id", tf_search.getText());
-    }//GEN-LAST:event_btn_searchIDActionPerformed
-
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         try {
             String name = tf_name.getText();
@@ -552,7 +510,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void search(String type, String query) {
         try {
             if(query.isEmpty()) {
-                this.rs = controller.get();
+                this.rs = controller.getIn();
             } else if (type.equals("id") && !query.isEmpty()) {
                 this.rs = controller.showById(query);
             } else if (type.equals("name") && !query.isEmpty()) {
@@ -603,7 +561,6 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_out;
-    private javax.swing.JButton btn_searchID;
     private javax.swing.JButton btn_searchName;
     private javax.swing.JButton btn_submit;
     private javax.swing.JButton btn_update;
